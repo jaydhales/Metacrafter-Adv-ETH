@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import Header from "./components/Header";
+import Organizations from "./pages/Organizations";
+import Vests from "./pages/Vests";
+import Home from "./pages/Home";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { ConnectionContext } from "./context/connection";
+import { getOrgFactoryContract } from "./utils";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [adminOrgs, setAdminOrgs] = useState([]);
+  const [userOrgs, setUserOrgs] = useState([]);
 
+  const { account, provider, setReadOnlyOrg } = useContext(ConnectionContext);
+
+  const getOrgs = useCallback(async () => {
+    const orgFactory = await getOrgFactoryContract(provider!, false);
+
+    setReadOnlyOrg?.(orgFactory);
+
+    setUserOrgs(await orgFactory.getUserOrganizations(account!));
+    setAdminOrgs(await orgFactory.getOwnerOrganizations(account!));
+  }, [account, provider, setReadOnlyOrg]);
+
+  useEffect(() => {
+    if (!account) return;
+    getOrgs().then((r) => r);
+  }, [account, getOrgs]);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/organizations",
+      element: <Organizations data={adminOrgs} refetch={getOrgs} />,
+    },
+    {
+      path: "/vests",
+      element: <Vests data={userOrgs} />,
+    },
+  ]);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <Toaster position="top-center" />
+      <Header />
+      <main className="mt-10">
+        <RouterProvider router={router} />
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;

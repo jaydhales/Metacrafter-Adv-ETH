@@ -69,4 +69,12 @@ contract OrganizationFactory {
     function getAllRoles(Organization _org) public pure returns (string[4] memory _role) {
         _role = _org.getAllRoles();
     }
+
+    // function getOrganizationInfo(Organization _org)
+    //     public
+    //     view
+    //     returns (string memory _name, IERC20 _vestingToken, uint256 _vestedAmount)
+    // {
+    //     _name = _org.name();
+    // }
 }

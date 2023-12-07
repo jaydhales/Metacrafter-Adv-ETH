@@ -1,0 +1,246 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "contract Organization",
+        "name": "_org",
+        "type": "address"
+      }
+    ],
+    "name": "activateVesting",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract Organization",
+        "name": "_org",
+        "type": "address"
+      }
+    ],
+    "name": "claimVested",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "contract IERC20",
+        "name": "_vestingToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_vestedAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "createOrganization",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract Organization",
+        "name": "_org",
+        "type": "address"
+      }
+    ],
+    "name": "getAllRoles",
+    "outputs": [
+      {
+        "internalType": "string[4]",
+        "name": "_role",
+        "type": "string[4]"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "getOwnerOrganizations",
+    "outputs": [
+      {
+        "internalType": "contract Organization[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract Organization",
+        "name": "_org",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_stakeHolder",
+        "type": "address"
+      }
+    ],
+    "name": "getStakeHolder",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "_role",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_vestingPeriod",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_rewardRatio",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_claims",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "getUserOrganizations",
+    "outputs": [
+      {
+        "internalType": "contract Organization[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "contract Organization",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "isOwner",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "contract Organization",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "isUser",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract Organization",
+        "name": "_org",
+        "type": "address"
+      },
+      {
+        "internalType": "enum Organization.Role",
+        "name": "_role",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "vestingPeriod",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "rewardRatio",
+        "type": "uint256"
+      }
+    ],
+    "name": "setRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract Organization",
+        "name": "_org",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_stakeHolder",
+        "type": "address"
+      },
+      {
+        "internalType": "enum Organization.Role",
+        "name": "_role",
+        "type": "uint8"
+      }
+    ],
+    "name": "setStakeHolder",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

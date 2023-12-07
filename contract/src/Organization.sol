@@ -17,11 +17,11 @@ contract Organization is Ownable {
         uint256 rewardRatio;
     }
 
-    string name;
+    string public name;
     bool public isVestActive;
-    uint256 vestingStartTime;
+    uint256 public vestingStartTime;
     uint256 totalRewardRatio;
-    uint256 vestedAmount;
+    uint256 public vestedAmount;
 
     mapping(address => Role) public stakeHolders;
     mapping(Role => RoleReward) public roles;
